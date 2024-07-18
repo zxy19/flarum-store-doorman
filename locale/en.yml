@@ -15,5 +15,6 @@ xypp-store-doorman:
       submit: "Send"
       email: "Email"
       url: "Invite URL"
+      failed: "Failed to send email"
     showcase: "Can invite {count} times, {group} group after registration, auto activate: {activate}"
     has_used: "Has used {count} times"

@@ -1,0 +1,20 @@
+xypp-store-doorman:
+  forum:
+    key-not-found: "邀请码未找到"
+    key: "邀请码"
+    create:
+      select: "选择数据"
+      count: "可用次数"
+      group: "注册后的用户组"
+      activate: "自动激活"
+      submit: "确定"
+      title: "选择数据"
+    send:
+      title: "发送邀请邮件"
+      cancel: "取消"
+      submit: "发送"
+      email: "邮箱"
+      url: "邀请URL"
+      failed: "发送邮箱失败"
+    showcase: "可以使用 {count} 次，注册后加入用户组 {group}， 自动激活: {activate}"
+    has_used: "已经使用 {count} 次"

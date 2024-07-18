@@ -26,11 +26,11 @@
     "extra": {
         "flarum-extension": {
             "title": "Store Doorman",
-            "category": "",
+            "category": "feature",
             "icon": {
-                "name": "",
-                "color": "",
-                "backgroundColor": ""
+                "name": "fas fa-key",
+                "color": "#fff",
+                "backgroundColor": "#f44336"
             }
         },
         "flarum-cli": {

@@ -1,8 +1,10 @@
 # Store Doorman
 
-![License](https://img.shields.io/badge/license-MIT-blue.svg) [![Latest Stable Version](https://img.shields.io/packagist/v/xypp/store-doorman.svg)](https://packagist.org/packages/xypp/store-doorman) [![Total Downloads](https://img.shields.io/packagist/dt/xypp/store-doorman.svg)](https://packagist.org/packages/xypp/store-doorman)
+![License](https://img.shields.io/badge/license-MIT-blue.svg)
 
 A [Flarum](http://flarum.org) extension. Add item to be purchased as doorman code.
+
+Requires fof/doorman and xypp/store
 
 ## Installation
 
@@ -23,5 +25,4 @@ php flarum cache:clear
 ## Links
 
 - [Packagist](https://packagist.org/packages/xypp/store-doorman)
-- [GitHub](https://github.com/xypp/store-doorman)
-- [Discuss](https://discuss.flarum.org/d/PUT_DISCUSS_SLUG_HERE)
+- [GitHub](https://github.com/zxypp/store-doorman)

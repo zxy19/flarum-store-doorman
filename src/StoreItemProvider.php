@@ -130,12 +130,16 @@ class StoreItemProvider extends \Xypp\Store\AbstractStoreProvider
             '{url}' => $this->extensions->isEnabled('fof-direct-links') ? $this->url->to('forum')->route('direct-links-signup') : $this->url->to('forum')->base(),
             '{code}' => $doorkey->key,
         ]);
-        $this->mailer->raw(
-            $body,
-            function (Message $message) use ($subject, $data) {
-                $message->to($data)->subject($subject);
-            }
-        );
+        try {
+            $this->mailer->raw(
+                $body,
+                function (Message $message) use ($subject, $data) {
+                    $message->to($data)->subject($subject);
+                }
+            );
+        } catch (\Exception $e) {
+            $context->exceptionWith("xypp-store-doorman.forum.send.failed");
+        }
         return true;
     }
     public function expire(PurchaseHistory $item, ExpireContext $context): bool
