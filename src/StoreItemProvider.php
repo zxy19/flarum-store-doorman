@@ -7,6 +7,7 @@ use Flarum\Settings\SettingsRepositoryInterface;
 use Flarum\User\User;
 use FoF\Doorman\Commands\CreateDoorkey;
 use FoF\Doorman\Doorkey;
+use Illuminate\Container\Container;
 use Xypp\Store\Context\ExpireContext;
 use Xypp\Store\Context\PurchaseContext;
 use Xypp\Store\Context\UseContext;
@@ -56,14 +57,12 @@ class StoreItemProvider extends \Xypp\Store\AbstractStoreProvider
         Dispatcher $bus,
         Mailer $mailer,
         Translator $translator,
-        UrlGenerator $url,
         SettingsRepositoryInterface $settings,
         ExtensionManager $extensions
     ) {
         $this->bus = $bus;
         $this->mailer = $mailer;
         $this->translator = $translator;
-        $this->url = $url;
         $this->settings = $settings;
         $this->extensions = $extensions;
     }
@@ -122,7 +121,7 @@ class StoreItemProvider extends \Xypp\Store\AbstractStoreProvider
             $context->exceptionWith("xypp-store-doorman.forum.key-not-found");
         }
         $context->noConsume();
-
+        $this->url = Container::getInstance()->make(UrlGenerator::class);
         $title = $this->settings->get('forum_title');
         $subject = $this->settings->get('forum_title') . ' - ' . $this->translator->trans('fof-doorman.forum.email.subject');
         $body = $this->translator->trans('fof-doorman.forum.email.body', [
