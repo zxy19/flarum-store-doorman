@@ -58,13 +58,15 @@ class StoreItemProvider extends \Xypp\Store\AbstractStoreProvider
         Mailer $mailer,
         Translator $translator,
         SettingsRepositoryInterface $settings,
-        ExtensionManager $extensions
+        ExtensionManager $extensions,
+        UrlGenerator $url
     ) {
         $this->bus = $bus;
         $this->mailer = $mailer;
         $this->translator = $translator;
         $this->settings = $settings;
         $this->extensions = $extensions;
+        $this->url = $url;
     }
 
     public function purchase(StoreItem $item, User $user, PurchaseHistory|null $old = null, PurchaseContext $context): array|bool|string
@@ -121,7 +123,6 @@ class StoreItemProvider extends \Xypp\Store\AbstractStoreProvider
             $context->exceptionWith("xypp-store-doorman.forum.key-not-found");
         }
         $context->noConsume();
-        $this->url = Container::getInstance()->make(UrlGenerator::class);
         $title = $this->settings->get('forum_title');
         $subject = $this->settings->get('forum_title') . ' - ' . $this->translator->trans('fof-doorman.forum.email.subject');
         $body = $this->translator->trans('fof-doorman.forum.email.body', [
